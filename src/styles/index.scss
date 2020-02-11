@@ -1,0 +1,25 @@
+// Vendors
+
+@import './vendors/reset';
+
+// Config
+
+@import './config/variables';
+
+// Components
+
+@import './components/ChoiceModal';
+
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h1 {
+  color: $blue;
+  font-size: 40px;
+}

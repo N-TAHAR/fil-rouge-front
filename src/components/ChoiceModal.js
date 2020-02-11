@@ -17,7 +17,7 @@ class ChoiceModal extends React.Component {
         {
           title: "Je veux me déplacer en vélo",
           description: "Nous allons chercher les arrondissements avec la meilleure qualité d'air pour assurer votre bien-être durant les Jeux Olympiques",
-          imgName: 'test',
+          imgName: 'nature',
           checked: false,
           id: 2
         },
@@ -31,14 +31,14 @@ class ChoiceModal extends React.Component {
         {
           title: "Je veux prendre le métro",
           description: "Nous allons chercher les arrondissements avec la meilleure qualité d'air pour assurer votre bien-être durant les Jeux Olympiques",
-          imgName: 'test',
+          imgName: 'nature',
           checked: false,
           id: 4
         },
         {
           title: "Je veux de l'action",
           description: "Nous allons chercher les arrondissements avec la meilleure qualité d'air pour assurer votre bien-être durant les Jeux Olympiques",
-          imgName: 'test',
+          imgName: 'nature',
           checked: false,
           id: 5
         },
@@ -49,17 +49,21 @@ class ChoiceModal extends React.Component {
           checked: false,
           id: 6
         },
-      ]
+      ],
+      isVisible: true
     };
 
     this.handleCardClick = this.handleCardClick.bind(this)
+    this.handleValidationClick = this.handleValidationClick.bind(this)
+    this.AtLeastOneCardIsChecked = this.AtLeastOneCardIsChecked.bind(this)
+    this.hideModal = this.hideModal.bind(this)
   }
 
   
   render() {
     return (
-      <div className="choice-modal">
-        <h1> Que cherchez-vous à Paris ?</h1>
+      <div className={`choice-modal ${this.state.isVisible ? '' : 'hidden'}`}>
+        <h1> Que recherchez-vous à Paris ?</h1>
         <div className="cards">
           {this.state.cards.map(card => {
             return (
@@ -67,15 +71,47 @@ class ChoiceModal extends React.Component {
             )
           })}
         </div>
+        <div className="buttons">
+          <button title={this.AtLeastOneCardIsChecked() ? '' : 'Veuillez sélectionner au moins une carte pour continuer.'} onClick={this.handleValidationClick} className={`primary ${this.AtLeastOneCardIsChecked() ? '' : 'disabled'}`}> OK </button>
+          <button onClick={this.hideModal} className="secondary"> Ignorer cette étape </button>
+        </div>  
       </div>
-
     );
+  }
+
+  AtLeastOneCardIsChecked() {
+    let checked = false;
+    this.state.cards.forEach(card => {
+      if (card.checked) {
+        checked = true;
+      }
+    })
+    return checked
   }
 
   handleCardClick(cardId) {
     this.setState(prevState => ({
       cards: prevState.cards.map(card => card.id === cardId ? {...card, checked: !card.checked} : card)
     }))
+  }
+
+  handleValidationClick() {
+    if (!(this.AtLeastOneCardIsChecked())) {
+      return false;
+    }
+
+    const checkedCards = this.state.cards.filter(card => card.checked)
+    this.props.saveCards(checkedCards)
+
+    this.hideModal()
+  }
+
+  hideModal() {
+    this.setState({
+      isVisible: false
+    })
+
+    this.props.unblurMap()
   }
 }
 

@@ -1,6 +1,30 @@
 .map {
-  background: $grey;
   width: 70%;
   height: 100%;
-  display: inline-block;
+  display: inline-flex;
+  vertical-align:top;
+  justify-content: center;
+  align-items: center;
+
+
+  svg {
+    width: 90%;
+  }
+}
+
+g.full {
+  cursor: pointer;
+
+  &:hover, &.highlighted {
+    .surface {
+      fill: $blue;
+    }
+    .text {
+      fill: white;
+    }
+  }
+
+  .surface, .texte {
+    transition: fill .3s;
+  }
 }

@@ -4,9 +4,9 @@ class DistrictCard extends React.Component {
   
   render() {
     return (
-      <div className="district-card">
+      <div onClick={this.props.onClick} onMouseEnter={this.props.onMouseEnter} onMouseLeave={this.props.onMouseLeave} className="district-card">
         <div className="image-container">
-          <img src={require(`../assets/images/${this.props.district.numero}.jpg`)} />
+          <img src={require(`../assets/images/13.jpg`)} />
         </div>
 
         <div className="card-footer">
@@ -20,7 +20,7 @@ class DistrictCard extends React.Component {
               <div className={`star ${this.props.district.noteGlobale > 3.5 ? 'checked' : ''}`}></div>
               <div className={`star ${this.props.district.noteGlobale > 4.5 ? 'checked' : ''}`}></div>
             </div>
-              <div class="value">{this.props.district.noteGlobale} / 5.0</div>
+              <div class="value">{this.props.district.noteGlobale} / 5</div>
           </div>
         </div>
       </div>

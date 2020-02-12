@@ -11,6 +11,7 @@
 
 @import './components/ChoiceModal';
 @import './components/DistrictModal';
+@import './components/ChartsModal';
 @import './components/Map';
 
 
@@ -21,8 +22,9 @@
 body {
   width: 100vw;
   height: 100vh;
-  overflow: hidden;
   font-family: 'Lato';
+  overflow: hidden;
+  background: $lightgrey;
 }
 
 h1 {

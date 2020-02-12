@@ -32,8 +32,6 @@ class App extends React.Component {
   saveCards(cards) {
     this.setState({
       checkedCards: cards
-    }, () => {
-      console.log(this.state.checkedCards)
     })
   }
 

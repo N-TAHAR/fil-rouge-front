@@ -6,12 +6,14 @@
   position: relative;
   overflow-y: auto;
   overflow-x: hidden;
+  background: white;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
   &::-webkit-scrollbar {
     width: 5px;
   }
    
   &::-webkit-scrollbar-thumb {
-    background: $blue; 
+    background: $green; 
   }
 
   .filter {
@@ -23,6 +25,7 @@
     text-align: center;
     width: 100%;
     cursor: pointer;
+    position: relative;
 
     &::after {
       content: '';
@@ -33,13 +36,13 @@
       left: 50%;
       transform: translate(-50%, 1.5px);
       width: 65px;
-      background: $blue;
+      background: $green;
       height: 4px;
     }
   }
 
   .filter-mode {
-    color: $blue;
+    color: $green;
   }
 
   .district-card {
@@ -75,14 +78,15 @@
       color: white;
 
       .value {
-        color: $coral;
+        color: $green;
+        font-weight: bold;
       }
 
       .star {
-        border: 1px solid $coral;
+        border: 1px solid $green;
         
         &.checked {
-          background-color: $coral;
+          background-color: $green;
         }
       }
     }
@@ -105,8 +109,8 @@
       transition: border .2s, background-color .2s;
 
       &.checked {
-        border: 1px solid $blue;
-        background: $blue;
+        border: 1px solid $green;
+        background: $green;
       }
     }
 

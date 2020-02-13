@@ -81,14 +81,6 @@
         color: $green;
         font-weight: bold;
       }
-
-      .star {
-        border: 1px solid $green;
-        
-        &.checked {
-          background-color: $green;
-        }
-      }
     }
   }
 
@@ -115,6 +107,7 @@
     }
 
     .value {
+      margin-left: 4px;
       display: inline-block;
       font-size: 14px;
       color: $grey;

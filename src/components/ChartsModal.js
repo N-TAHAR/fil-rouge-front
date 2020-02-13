@@ -9,7 +9,7 @@ class ChartsModal extends React.Component {
     return (
       <div className={`charts-modal ${this.props.district === null ? '' : 'is-open'}`}>
         <div className="wrapper">
-          <div class="go-back" onClick={this.props.onClick}></div>
+          <div className="go-back" onClick={this.props.onClick}></div>
           <div className="filter">
             {this.props.district.numero} <span className="abréviation">{this.props.district.numero !== 1 ? 'ème' : 'er'}</span> arrondissement
           </div>

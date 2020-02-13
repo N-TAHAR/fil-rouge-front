@@ -20,7 +20,7 @@ class DistrictCard extends React.Component {
               <div className={`star ${this.props.district.noteGlobale > 3.5 ? 'checked' : ''}`}></div>
               <div className={`star ${this.props.district.noteGlobale > 4.5 ? 'checked' : ''}`}></div>
             </div>
-              <div class="value">{this.props.district.noteGlobale} / 5</div>
+              <div className="value">{this.props.district.noteGlobale} / 5</div>
           </div>
         </div>
       </div>

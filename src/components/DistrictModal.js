@@ -20,15 +20,17 @@ class DistrictModal extends React.Component {
         <div onClick={this.handleFilterClick} className="filter"> Trier par <span className="filter-mode">{this.state.filterMode}</span>
         </div>
         <div className="modal-content">
+          <div className="district-cards">
           {this.props.currentDistrict === null &&
           this.props.districts.map(district => {
             return (
               <DistrictCard 
               onMouseEnter={() => { this.props.highlightDistrict(district) }}
-              onMouseLeave={() => { this.props.unhighlightDistrict(district) }} onClick={() => this.props.handleCardClick(district) } district={district} key={district.numero} />
+              onMouseLeave={() => { this.props.unhighlightDistrict(district) }} onClick={() => this.props.handleCardClick(district) } district={district} key={district.district} />
             )
           })}
-        </div>
+          </div>
+          </div>
         <ChartsModal onClick={this.props.goBack} district={this.props.currentDistrict} />
       </div>
     )

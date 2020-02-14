@@ -10,42 +10,42 @@ class ChoiceModal extends React.Component {
         {
           title: "J'ai envie d'air pur",
           description: "Nous allons chercher les arrondissements avec la meilleure qualité d'air pour assurer votre bien-être durant les Jeux Olympiques",
-          imgName: 'nature',
+          imgName: '75013',
           checked: false,
           id: 1
         },
         {
           title: "Je veux me déplacer en vélo",
           description: "Nous allons chercher les arrondissements avec la meilleure qualité d'air pour assurer votre bien-être durant les Jeux Olympiques",
-          imgName: 'nature',
+          imgName: '75013',
           checked: false,
           id: 2
         },
         {
           title: "J'aime sortir le soir",
           description: "Nous allons chercher les arrondissements avec la meilleure qualité d'air pour assurer votre bien-être durant les Jeux Olympiques",
-          imgName: 'nature',
+          imgName: '75013',
           checked: false,
           id: 3
         },
         {
           title: "Je veux prendre le métro",
           description: "Nous allons chercher les arrondissements avec la meilleure qualité d'air pour assurer votre bien-être durant les Jeux Olympiques",
-          imgName: 'nature',
+          imgName: '75013',
           checked: false,
           id: 4
         },
         {
           title: "Je veux de l'action",
           description: "Nous allons chercher les arrondissements avec la meilleure qualité d'air pour assurer votre bien-être durant les Jeux Olympiques",
-          imgName: 'nature',
+          imgName: '75013',
           checked: false,
           id: 5
         },
         {
           title: "Je veux être proche de la nature",
           description: "Nous allons chercher les arrondissements avec la meilleure qualité d'air pour assurer votre bien-être durant les Jeux Olympiques",
-          imgName: 'nature',
+          imgName: '75013',
           checked: false,
           id: 6
         },

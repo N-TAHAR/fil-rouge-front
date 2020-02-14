@@ -11,85 +11,7 @@ class App extends React.Component {
       checkedCards: null,
       mapIsBlurred: true,
       currentDistrict: null,
-      districts: [
-        {
-          numero: 2,
-          noteGlobale: 4,
-          noteQualiteAir: 2,
-          noteEspacesVerts: 5,
-          noteVelo: 5
-        },
-        {
-          numero: 13,
-          noteGlobale: 4.2,
-          noteQualiteAir: 2,
-          noteEspacesVerts: 5,
-          noteVelo: 5
-        },
-        {
-          numero: 12,
-          noteGlobale: 3.4,
-          noteQualiteAir: 2,
-          noteEspacesVerts: 5,
-          noteVelo: 5
-        },
-        {
-          numero: 7,
-          noteGlobale: 5,
-          noteQualiteAir: 2,
-          noteEspacesVerts: 5,
-          noteVelo: 5
-        },
-        {
-          numero: 5,
-          noteGlobale: 4,
-          noteQualiteAir: 2,
-          noteEspacesVerts: 5,
-          noteVelo: 5
-        },
-        {
-          numero: 3,
-          noteGlobale: 0,
-          noteQualiteAir: 2,
-          noteEspacesVerts: 5,
-          noteVelo: 5
-        },
-        {
-          numero: 19,
-          noteGlobale: 4,
-          noteQualiteAir: 2,
-          noteEspacesVerts: 5,
-          noteVelo: 5
-        },
-        {
-          numero: 20,
-          noteGlobale: 4,
-          noteQualiteAir: 2,
-          noteEspacesVerts: 5,
-          noteVelo: 5
-        },
-        {
-          numero: 1,
-          noteGlobale: 4,
-          noteQualiteAir: 2,
-          noteEspacesVerts: 5,
-          noteVelo: 5
-        },
-        {
-          numero: 18,
-          noteGlobale: 2.2,
-          noteQualiteAir: 2,
-          noteEspacesVerts: 5,
-          noteVelo: 5
-        },
-        {
-          numero: 17,
-          noteGlobale: 3,
-          noteQualiteAir: 2,
-          noteEspacesVerts: 5,
-          noteVelo: 5
-        },
-      ]
+      districts: []
     }
     
     this.saveCards = this.saveCards.bind(this)
@@ -98,6 +20,19 @@ class App extends React.Component {
     this.handleMapClick = this.handleMapClick.bind(this)
     this.goBack = this.goBack.bind(this)
   }
+
+  componentDidMount() {
+    fetch("http://127.0.0.1:8000/district")
+    .then(res => res.json())
+    .then((result) => {
+      this.setState({
+        districts: result
+      }, () => {
+        console.log(this.state.districts)
+      })
+    })
+  }
+
   render() {
     return (
       <main className="app">
@@ -111,14 +46,20 @@ class App extends React.Component {
 
     );
   }
-
+  
   handleMapClick(districtId) {
-    const district = this.state.districts.find(district => district.numero === districtId)
+    console.log(districtId)
+    const district = this.state.districts.find(district => parseInt(district.district) === districtId)
+    console.log(district)
     
     this.handleCardClick(district)
   }
 
   handleCardClick(district) {
+    if (this.state.currentDistrict !== null) {
+      this.unhighlightDistrict(this.state.currentDistrict)
+    }
+
     this.setState({
       currentDistrict: district
     })
@@ -147,11 +88,11 @@ class App extends React.Component {
   }
 
   highlightDistrict(district) {
-    document.querySelector(`g.full-${district.numero}`).classList.add('highlighted')
+    document.querySelector(`g.full-${district.district}`).classList.add('highlighted')
   }
 
   unhighlightDistrict(district) {
-    document.querySelector(`g.full-${district.numero}`).classList.remove('highlighted')
+    document.querySelector(`g.full-${district.district}`).classList.remove('highlighted')
   }
 }
 

@@ -1,4 +1,5 @@
 import React from 'react'
+import {zipCodeToId} from '../services/utils'
 
 class ChartsModal extends React.Component {
   
@@ -11,10 +12,10 @@ class ChartsModal extends React.Component {
         <div className="wrapper">
           <div className="go-back" onClick={this.props.onClick}></div>
           <div className="filter">
-            {this.props.district.numero} <span className="abréviation">{this.props.district.numero !== 1 ? 'ème' : 'er'}</span> arrondissement
+            {zipCodeToId(this.props.district.district)} <span className="abréviation"> {zipCodeToId(this.props.district.district) !== '1' ? 'ème' : 'er'}</span> arrondissement
           </div>
           <div className="modal-content">
-            test test test test test test test test test test test test test test vv vtest test
+            
           </div>
         </div>
       </div>

@@ -1,5 +1,6 @@
 import React from 'react'
-import {zipCodeToId} from '../services/utils'
+import {zipCodeToId, getCategoryNameFromIndex, getDistrictName} from '../services/utils'
+import ChartComp from './ChartComp'
 
 class ChartsModal extends React.Component {
   
@@ -12,10 +13,14 @@ class ChartsModal extends React.Component {
         <div className="wrapper">
           <div className="go-back" onClick={this.props.onClick}></div>
           <div className="filter">
-            {zipCodeToId(this.props.district.district)} <span className="abréviation"> {zipCodeToId(this.props.district.district) !== '1' ? 'ème' : 'er'}</span> arrondissement
+            {zipCodeToId(this.props.district.district)} <span className="abréviation"> {zipCodeToId(this.props.district.district) !== '1' ? 'ème' : 'er'}</span> — {getDistrictName(zipCodeToId(this.props.district.district))}
           </div>
           <div className="modal-content">
-            
+            {Object.values(this.props.district.notes).map((note, index) => {
+              return (
+                <ChartComp key={getCategoryNameFromIndex(index)} note={note} name={getCategoryNameFromIndex(index)} />
+              )
+            })}
           </div>
         </div>
       </div>

@@ -4,6 +4,22 @@ export function zipCodeToId(zipCode) {
   )
 }
 
+export function getCategoryNameFromIndex(index) {
+  switch (index) {
+    case 0:
+      return 'Espaces verts'
+    case 1:
+      return 'Sorties'
+    case 2:
+      return 'Vélos'
+    case 3:
+      return 'Connexion internet'
+    default:
+      console.error(`L'index ${index} ne correspond à aucune catégorie`)
+      return 'Catégorie inconnue'
+  }
+}
+
 export function getDistrictName(districtNumber) {
   switch (districtNumber) {
     case 1:

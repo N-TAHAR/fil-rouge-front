@@ -48,9 +48,7 @@ class App extends React.Component {
   }
   
   handleMapClick(districtId) {
-    console.log(districtId)
     const district = this.state.districts.find(district => parseInt(district.district) === districtId)
-    console.log(district)
     
     this.handleCardClick(district)
   }

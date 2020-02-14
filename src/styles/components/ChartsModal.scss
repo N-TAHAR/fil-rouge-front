@@ -39,7 +39,7 @@
     cursor: auto;
   }
 
-  
+
 
   .go-back {
     z-index: 15;
@@ -57,5 +57,31 @@
     &:hover {
       transform: scale(1.1);
     }
+  }
+
+  .chart {
+    margin-bottom: 48px;
+    margin-left: 24px;
+    position: relative;
+    display: inline-block;
+    width: calc(50% - 36px);
+
+    &:nth-of-type(2n) {
+      margin-right: 24px
+    }
+  }
+
+  .chart-name {
+    font-size: 22px;
+    color: $green;
+  }
+
+  .chart-canvas {
+    margin: 16px 0 24px 0;
+  }
+
+
+  .rating {
+    font-size: 22px;
   }
 }

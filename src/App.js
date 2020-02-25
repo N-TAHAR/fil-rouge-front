@@ -1,6 +1,6 @@
 import React from 'react'
-import ChoiceModal from './components/ChoiceModal'
-import DistrictModal from './components/DistrictModal'
+import ChoiceModal from './components/ChoiceModal/ChoiceModal.js'
+import DistrictModal from './components/DistrictModal/DistrictModal.js'
 import Map from './components/Map'
 
 class App extends React.Component {

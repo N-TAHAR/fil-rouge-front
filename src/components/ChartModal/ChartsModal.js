@@ -1,5 +1,5 @@
 import React from 'react'
-import {zipCodeToId, getCategoryNameFromIndex, getDistrictName} from '../services/utils'
+import {zipCodeToId, getCategoryNameFromIndex, getDistrictName} from '../../services/utils'
 import ChartComp from './ChartComp'
 
 class ChartsModal extends React.Component {

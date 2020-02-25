@@ -1,5 +1,5 @@
 import React from 'react'
-import {zipCodeToId, getDistrictName} from '../services/utils'
+import {zipCodeToId, getDistrictName} from '../../services/utils'
 
 class DistrictCard extends React.Component {
   
@@ -7,7 +7,7 @@ class DistrictCard extends React.Component {
     return (
       <div onClick={this.props.onClick} onMouseEnter={this.props.onMouseEnter} onMouseLeave={this.props.onMouseLeave} className="district-card">
         <div className="image-container">
-          <img src={require(`../assets/images/${this.props.district.district}.jpg`)} alt={getDistrictName(zipCodeToId(this.props.district.district))} />
+          <img src={require(`../../assets/images/${this.props.district.district}.jpg`)} alt={getDistrictName(zipCodeToId(this.props.district.district))} />
         </div>
 
         <div className="card-footer">

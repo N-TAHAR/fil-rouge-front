@@ -1,6 +1,6 @@
 import React from 'react'
 import DistrictCard from './DistrictCard'
-import ChartsModal from './ChartsModal'
+import ChartsModal from '../ChartModal/ChartsModal'
 
 class DistrictModal extends React.Component {
   constructor(props) {

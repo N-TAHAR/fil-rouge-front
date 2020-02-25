@@ -16,7 +16,7 @@ class ChartComp extends React.Component {
       <div className="chart">
         <div className="chart-name">{this.props.name}</div>
         <canvas className="chart-canvas" id={this.props.name}></canvas>
-        <div className="rating">{this.props.note} / 10</div>
+        <div className="rating">{this.props.note} / 5</div>
       </div>
     )
   }
@@ -31,7 +31,7 @@ class ChartComp extends React.Component {
 
   updateChart(nextProps) {
     this.state.chart.data.datasets[0].data[0] = nextProps.note
-    this.state.chart.data.datasets[0].data[1] = 10 - nextProps.note
+    this.state.chart.data.datasets[0].data[1] = 5 - nextProps.note
     this.state.chart.update()
   }
 
@@ -46,7 +46,7 @@ class ChartComp extends React.Component {
               label: props.name,
               backgroundColor: ["#3047E2", 'rgba(0,0,0,0.02)'],
               hoverBackgroundColor: ["#3047E2", 'rgba(0,0,0,0.02)'],
-              data: [props.note, 10-props.note]
+              data: [props.note, 5-props.note]
             }
           ]
         },

@@ -5,66 +5,42 @@ export function zipCodeToId(zipCode) {
 }
 
 export function getCategoryNameFromIndex(index) {
-  switch (index) {
-    case 0:
-      return 'Espaces verts'
-    case 1:
-      return 'Sorties'
-    case 2:
-      return 'Vélos'
-    case 3:
-      return 'Connexion internet'
-    default:
-      console.error(`L'index ${index} ne correspond à aucune catégorie`)
-      return 'Catégorie inconnue'
+
+  const categories = {
+    0: 'Espaces verts',
+    1: 'Evènements',
+    2: 'Vélos',
+    3: 'Bornes wifi'
   }
+
+  if (!categories[index]) return `index ${index} : Catégorie inconnue`
+  return categories[index]
 }
 
 export function getDistrictName(districtNumber) {
-  switch (districtNumber) {
-    case 1:
-      return 'Le Louvre'
-    case 2:
-      return 'La Bourse'
-    case 3:
-      return 'Le Temple'
-    case 4:
-      return 'L\'Hôtel-de-Ville'
-    case 5:
-      return 'Le Panthéon'
-    case 6:
-      return 'Le Luxembourg'
-    case 7:
-      return 'Le Palais-Bourbon'
-    case 8:
-      return 'L\'Élysée'
-    case 9:
-      return 'L\'Opéra'
-    case 10:
-      return 'L\'Enclos-Saint-Laurent'
-    case 11:
-      return 'Popincourt'
-    case 12:
-      return 'Reuilly'
-    case 13:
-      return 'Les Gobelins'
-    case 14:
-      return 'L\'Observatoire'
-    case 15:
-      return 'Vaugirard'
-    case 16:
-      return 'Passy'
-    case 17:
-      return 'Les Batignolles-Monceau'
-    case 18:
-      return 'La Butte-Montmartre'
-    case 19:
-      return 'Les Buttes-Chaumont'
-    case 20:
-      return 'Ménilmontant'
-    default: 
-      console.error(`Arrondissement inconnu: ${districtNumber}`)
-      return 'Arrondissement inconnu'
-      
+  const districtNames = {
+    1: 'Le Louvre',
+    2: 'La Bourse',
+    3: 'Le Temple',
+    4: 'L\'Hôtel-de-Ville',
+    5: 'Le Panthéon',
+    6: 'Le Luxembourg',
+    7: 'Le Palais-Bourbon',
+    8: 'L\'Élysée',
+    9: 'L\'Opéra',
+    10: 'L\'Enclos-Saint-Laurent',
+    11: 'Popincourt',
+    12: 'Reuilly',
+    13: 'Les Gobelins',
+    14: 'L\'Observatoire',
+    15: 'Vaugirard',
+    16: 'Passy',
+    17: 'Les Batignolles-Monceau',
+    18: 'La Butte-Montmartre',
+    19: 'Les Buttes-Chaumont',
+    20: 'Ménilmontant'
   }
+
+  if (!districtNames[districtNumber]) return `Arrondissement ${districtNumber} inconnu`
+  return districtNames[districtNumber]
 }

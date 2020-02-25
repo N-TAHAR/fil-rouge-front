@@ -22,7 +22,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    fetch("http://127.0.0.1:8000/district")
+    fetch("https://127.0.0.1:8000/district")
     .then(res => res.json())
     .then((result) => {
       this.setState({

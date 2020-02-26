@@ -39,10 +39,6 @@ h1 {
   transition: .3s;
 }
 
-.content.blurred {
-  filter: blur(4px);
-}
-
 .abréviation {
   display: inline-block;
   font-size: 11px;
@@ -85,10 +81,16 @@ button.secondary {
   }
 }
 
+button {
+  cursor: pointer;
+}
+
 select {
+  cursor: pointer;
   font-family: 'Lato';
   display: block;
   padding: 4px 8px;
   border-radius: 50px;
   outline: none;
+  display: inline-block;
 }

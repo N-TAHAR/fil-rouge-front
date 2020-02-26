@@ -55,20 +55,18 @@ class ChoiceModal extends React.Component {
           checked: false,
           id: 6
         },
-      ],
-      isVisible: true
+      ]
     };
 
     this.handleCardClick = this.handleCardClick.bind(this)
     this.handleValidationClick = this.handleValidationClick.bind(this)
     this.AtLeastOneCardIsChecked = this.AtLeastOneCardIsChecked.bind(this)
-    this.hideModal = this.hideModal.bind(this)
   }
 
   
   render() {
     return (
-      <div className={`choice-modal ${this.state.isVisible ? '' : 'hidden'}`}>
+      <div className={`choice-modal ${this.props.isVisible ? '' : 'hidden'}`}>
         <h1> Que recherchez-vous à Paris ?</h1>
         <div className="cards">
           {this.state.cards.map(card => {
@@ -79,7 +77,7 @@ class ChoiceModal extends React.Component {
         </div>
         <div className="buttons">
           <button title={this.AtLeastOneCardIsChecked() ? '' : 'Veuillez sélectionner au moins une carte pour continuer.'} onClick={this.handleValidationClick} className={`primary ${this.AtLeastOneCardIsChecked() ? '' : 'disabled'}`}> OK </button>
-          <button onClick={this.hideModal} className="secondary"> Ignorer cette étape </button>
+          <button onClick={this.props.hideChoiceModal} className="secondary"> Ignorer cette étape </button>
         </div>  
       </div>
     );
@@ -108,15 +106,7 @@ class ChoiceModal extends React.Component {
 
     const checkedCards = this.state.cards.filter(card => card.checked)
     this.props.saveCards(checkedCards)
-    this.hideModal()
-  }
-
-  hideModal() {
-    this.setState({
-      isVisible: false
-    })
-    
-    this.props.unblurMap()
+    this.props.hideChoiceModal()
   }
 }
 

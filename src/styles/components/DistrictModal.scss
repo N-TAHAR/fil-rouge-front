@@ -124,6 +124,18 @@
 
 }
 
+.filters {
+  display: inline-block;
+  padding: 4px 16px;
+  border-radius: 50px;
+  text-align: center;
+  border: 1px solid grey;
+  outline: none;
+  margin-left: 16px;
+  margin-bottom: 16px;
+  margin-top: 16px;
+}
+
 @media(max-width: 1024px) {
   .district-modal {
 

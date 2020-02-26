@@ -11,14 +11,16 @@ class App extends React.Component {
       checkedCards: null,
       mapIsBlurred: true,
       currentDistrict: null,
-      districts: []
+      districts: [],
+      choiceModalIsVisible: true
     }
     
     this.saveCards = this.saveCards.bind(this)
-    this.unblurMap = this.unblurMap.bind(this)
     this.handleCardClick = this.handleCardClick.bind(this)
     this.handleMapClick = this.handleMapClick.bind(this)
     this.goBack = this.goBack.bind(this)
+    this.openChoiceModal = this.openChoiceModal.bind(this)
+    this.hideChoiceModal = this.hideChoiceModal.bind(this)
   }
 
   componentDidMount() {
@@ -36,10 +38,25 @@ class App extends React.Component {
   render() {
     return (
       <main className="app">
-        <ChoiceModal unblurMap={this.unblurMap} saveCards={this.saveCards}/>
+        <ChoiceModal 
+        hideChoiceModal={this.hideChoiceModal} 
+        isVisible={this.state.choiceModalIsVisible} 
+        unblurMap={this.unblurMap} 
+        saveCards={this.saveCards}
+        />
 
         <div className={`content ${this.state.mapIsBlurred ?  'blurred' : ''}`}>
-          <DistrictModal checkedCards={this.state.checkedCards} districts={this.state.districts} highlightDistrict={this.highlightDistrict} unhighlightDistrict={this.unhighlightDistrict} handleCardClick={this.handleCardClick} goBack={this.goBack} currentDistrict={this.state.currentDistrict} />
+          <DistrictModal 
+          openChoiceModal={this.openChoiceModal} 
+          hideChoiceModal={this.hideChoiceModal} 
+          checkedCards={this.state.checkedCards} 
+          districts={this.state.districts} 
+          highlightDistrict={this.highlightDistrict} 
+          unhighlightDistrict={this.unhighlightDistrict} 
+          handleCardClick={this.handleCardClick} 
+          goBack={this.goBack} 
+          currentDistrict={this.state.currentDistrict} 
+          />
           <Map handleMapClick={this.handleMapClick} />
         </div>
       </main>
@@ -83,18 +100,24 @@ class App extends React.Component {
     document.querySelector(`g.full-${district.district}`).classList.add('favorite')
   }
 
-  unblurMap() {
-    this.setState({
-      mapIsBlurred: false
-    })
-  }
-
   highlightDistrict(district) {
     document.querySelector(`g.full-${district.district}`).classList.add('highlighted')
   }
 
   unhighlightDistrict(district) {
     document.querySelector(`g.full-${district.district}`).classList.remove('highlighted')
+  }
+
+  hideChoiceModal() {
+    this.setState({
+      choiceModalIsVisible: false
+    })
+  }
+
+  openChoiceModal() {
+    this.setState({
+      choiceModalIsVisible: true
+    })
   }
 }
 

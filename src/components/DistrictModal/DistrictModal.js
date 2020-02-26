@@ -23,7 +23,7 @@ class DistrictModal extends React.Component {
           <option value="note">Note</option>
           <option value="arrondissements">Arrondissements</option>
         </select>
-        <button class="filters" onClick={this.props.openModal}> Filtres </button>
+        <button className="filters" onClick={this.props.openChoiceModal}> Filtres </button>
         <div className="modal-content">
           <div className="district-cards">
           {this.props.currentDistrict === null && this.sorteredDistricts()}

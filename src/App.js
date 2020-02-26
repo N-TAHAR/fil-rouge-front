@@ -22,7 +22,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    fetch("http://127.0.0.1:8000/district")
+    fetch("https://127.0.0.1:8000/district")
     .then(res => res.json())
     .then((result) => {
       this.setState({
@@ -39,7 +39,7 @@ class App extends React.Component {
         <ChoiceModal unblurMap={this.unblurMap} saveCards={this.saveCards}/>
 
         <div className={`content ${this.state.mapIsBlurred ?  'blurred' : ''}`}>
-          <DistrictModal districts={this.state.districts} highlightDistrict={this.highlightDistrict} unhighlightDistrict={this.unhighlightDistrict} handleCardClick={this.handleCardClick} goBack={this.goBack} currentDistrict={this.state.currentDistrict} />
+          <DistrictModal checkedCards={this.state.checkedCards} districts={this.state.districts} highlightDistrict={this.highlightDistrict} unhighlightDistrict={this.unhighlightDistrict} handleCardClick={this.handleCardClick} goBack={this.goBack} currentDistrict={this.state.currentDistrict} />
           <Map handleMapClick={this.handleMapClick} />
         </div>
       </main>
@@ -77,6 +77,10 @@ class App extends React.Component {
     this.setState({
       checkedCards: cards
     })
+  }
+
+  favoriteDistrict(district) {
+    document.querySelector(`g.full-${district.district}`).classList.add('favorite')
   }
 
   unblurMap() {

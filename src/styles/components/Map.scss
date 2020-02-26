@@ -24,6 +24,15 @@ g.full {
     }
   }
 
+  &.favorite {
+    .surface {
+      fill: red
+    }
+    .text {
+      fill: white
+    }
+  }
+
   .surface, .texte {
     transition: fill .3s;
   }

@@ -9,6 +9,7 @@ class ChoiceModal extends React.Component {
       cards: [
         {
           title: "J'ai envie d'air pur",
+          value: "air",
           description: "Nous allons chercher les arrondissements avec la meilleure qualité d'air pour assurer votre bien-être durant les Jeux Olympiques",
           imgName: 'nature',
           checked: false,
@@ -16,6 +17,7 @@ class ChoiceModal extends React.Component {
         },
         {
           title: "Je veux me déplacer en vélo",
+          value: "velo",
           description: "Nous allons chercher les arrondissements avec la meilleure qualité d'air pour assurer votre bien-être durant les Jeux Olympiques",
           imgName: 'nature',
           checked: false,
@@ -23,6 +25,7 @@ class ChoiceModal extends React.Component {
         },
         {
           title: "J'aime sortir le soir",
+          value: "sortir",
           description: "Nous allons chercher les arrondissements avec la meilleure qualité d'air pour assurer votre bien-être durant les Jeux Olympiques",
           imgName: 'nature',
           checked: false,
@@ -30,20 +33,23 @@ class ChoiceModal extends React.Component {
         },
         {
           title: "Je veux prendre le métro",
+          value: "metro",
           description: "Nous allons chercher les arrondissements avec la meilleure qualité d'air pour assurer votre bien-être durant les Jeux Olympiques",
           imgName: 'nature',
           checked: false,
           id: 4
         },
         {
-          title: "Je veux de l'action",
-          description: "Nous allons chercher les arrondissements avec la meilleure qualité d'air pour assurer votre bien-être durant les Jeux Olympiques",
+          title: "Je veux du wifi",
+          value: "wifi",
+          description: "Nous allons chercher les arrondissements avec la meilleure qualité de wifi pour assurer votre bien-être durant les Jeux Olympiques",
           imgName: 'nature',
           checked: false,
           id: 5
         },
         {
           title: "Je veux être proche de la nature",
+          value: "nature",
           description: "Nous allons chercher les arrondissements avec la meilleure qualité d'air pour assurer votre bien-être durant les Jeux Olympiques",
           imgName: 'nature',
           checked: false,
@@ -102,7 +108,6 @@ class ChoiceModal extends React.Component {
 
     const checkedCards = this.state.cards.filter(card => card.checked)
     this.props.saveCards(checkedCards)
-
     this.hideModal()
   }
 
@@ -110,7 +115,7 @@ class ChoiceModal extends React.Component {
     this.setState({
       isVisible: false
     })
-
+    
     this.props.unblurMap()
   }
 }

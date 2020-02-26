@@ -11,29 +11,93 @@ class DistrictModal extends React.Component {
     }
 
     this.handleFilterClick = this.handleFilterClick.bind(this)
+    this.handleChange = this.handleChange.bind(this)
+    this.sorteredDistricts = this.sorteredDistricts.bind(this)
 
   }
 
   render() {
     return (
       <div className="district-modal">
-        <div onClick={this.handleFilterClick} className="filter"> Trier par <span className="filter-mode">{this.state.filterMode}</span>
-        </div>
+        <select onChange={this.handleChange}>
+          <option value="note">Note</option>
+          <option value="arrondissements">Arrondissements</option>
+        </select>
+        <button class="filters" onClick={this.props.openModal}> Filtres </button>
         <div className="modal-content">
           <div className="district-cards">
-          {this.props.currentDistrict === null &&
-          this.props.districts.map(district => {
-            return (
-              <DistrictCard 
-              onMouseEnter={() => { this.props.highlightDistrict(district) }}
-              onMouseLeave={() => { this.props.unhighlightDistrict(district) }} onClick={() => this.props.handleCardClick(district) } district={district} key={district.district} />
-            )
-          })}
+          {this.props.currentDistrict === null && this.sorteredDistricts()}
           </div>
           </div>
         <ChartsModal onClick={this.props.goBack} district={this.props.currentDistrict} />
       </div>
     )
+  }
+
+  sorteredDistricts() {
+    let districts = this.props.districts
+
+    if (this.props.checkedCards) {
+      districts.forEach(district => {
+        let note = 0
+        this.props.checkedCards.forEach(card => {
+          if (card.value === 'nature') {
+            note += district.notes.green_space_note
+          }
+          if (card.value === 'sortir') {
+            note += district.notes.event_note
+          }
+          if (card.value === 'velo') {
+            note += district.notes.velib_note
+          }
+          if (card.value === 'wifi') {
+            note += district.notes.wifi_note
+          }
+        });
+        district.ratingRelativeToCheckedCards = (note / this.props.checkedCards.length)
+      })
+    }
+
+    if (this.state.filterMode === 'note') {
+
+      if (this.props.checkedCards) {
+
+        districts.sort(function(a, b) {
+          return a.ratingRelativeToCheckedCards > b.ratingRelativeToCheckedCards ? -1 : 1
+        })
+
+      } else {
+        
+        districts.sort(function(a, b) {
+          return a.global_note > b.global_note ? -1 : 1
+        })
+        
+      }
+      
+    }
+
+    if (this.state.filterMode === 'arrondissements') {
+      districts.sort(function(a, b) {
+        return a.district < b.district ? -1 : 1
+      })
+    }
+
+    return (
+      districts.map(district => {
+        return (
+          <DistrictCard 
+          onMouseEnter={() => { this.props.highlightDistrict(district) }}
+          onMouseLeave={() => { this.props.unhighlightDistrict(district) }} onClick={() => this.props.handleCardClick(district) } district={district} key={district.district} />
+        )
+      })
+    )
+
+  }
+
+  handleChange(e) {
+    this.setState({
+      filterMode: e.target.value
+    })
   }
 
   handleFilterClick() {

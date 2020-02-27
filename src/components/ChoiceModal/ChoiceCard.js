@@ -5,8 +5,8 @@ class ChoiceCard extends React.Component {
   render() {
     return (
       <div onClick={this.props.onClick} className={`choice-card  ${this.props.card.checked  ? 'checked' : ''}`}>
-        <div class="icon">        
-          <div class="tooltip">
+        <div className="icon">        
+          <div className="tooltip">
             <h2>{this.props.card.title}</h2>
             <p> {this.props.card.description} </p>
           </div>

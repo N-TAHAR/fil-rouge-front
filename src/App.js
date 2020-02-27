@@ -13,7 +13,8 @@ class App extends React.Component {
       currentDistrict: null,
       districts: [],
       averages: [],
-      choiceModalIsVisible: true
+      choiceModalIsVisible: true,
+      bestDistrict: null
     }
     
     this.saveCards = this.saveCards.bind(this)
@@ -40,7 +41,7 @@ class App extends React.Component {
   render() {
     return (
       <main className="app">
-        <div className={`content ${this.state.mapIsBlurred ?  'blurred' : ''}`}>
+        <div className='content'>
           <DistrictModal 
           openChoiceModal={this.openChoiceModal}
           hideChoiceModal={this.hideChoiceModal} 
@@ -52,7 +53,7 @@ class App extends React.Component {
           unhighlightDistrict={this.unhighlightDistrict}
           handleCardClick={this.handleCardClick} 
           goBack={this.goBack} 
-          currentDistrict={this.state.currentDistrict} 
+          currentDistrict={this.state.currentDistrict}
           />
           <Map handleMapClick={this.handleMapClick} />1
           <InfoModal isVisible={this.state.choiceModalIsVisible} />
@@ -70,6 +71,7 @@ class App extends React.Component {
 
   handleCardClick(district) {
     if (this.state.currentDistrict !== null) {
+      this.unfavoriteDistrict(this.state.currentDistrict)
       this.unhighlightDistrict(this.state.currentDistrict)
     }
 
@@ -77,10 +79,11 @@ class App extends React.Component {
       currentDistrict: district
     })
 
-    this.highlightDistrict(district)
+    this.favoriteDistrict(district)
   }
 
   goBack() {
+    this.unfavoriteDistrict(this.state.currentDistrict)
     this.unhighlightDistrict(this.state.currentDistrict)
     
     this.setState({
@@ -91,16 +94,23 @@ class App extends React.Component {
   saveCards(cards) {
     this.setState({
       checkedCards: cards
-    }, function() {
     })
   }
 
-  highlightDistrict(district) {
+  favoriteDistrict(district) {
     document.querySelector(`g.full-${district.district}`).classList.add('favorite')
   }
 
-  unhighlightDistrict(district) {
+  unfavoriteDistrict(district) {
     document.querySelector(`g.full-${district.district}`).classList.remove('favorite')
+  }
+
+  highlightDistrict(district) {
+    document.querySelector(`g.full-${district.district}`).classList.add('highlighted')
+  }
+
+  unhighlightDistrict(district) {
+    document.querySelector(`g.full-${district.district}`).classList.remove('highlighted')
   }
 
   hideChoiceModal() {

@@ -21,8 +21,8 @@ class DistrictModal extends React.Component {
       <div className={`district-modal ${this.props.choiceModalIsVisible ? 'hidden' : ''}`}>
         <div className="modal-header">
           <select onChange={this.handleChange}>
-            <option value="note">Note</option>
-            <option value="arrondissements">Arrondissements</option>
+            <option value="note">Note {this.props.checkedCards === null ? '' : '(en fonction de vos préférences'}</option>
+            <option value="arrondissements">Classer par arrondissements</option>
           </select>
           <button className="filters" onClick={this.props.openChoiceModal}> Filtres </button>
         </div>
@@ -52,16 +52,16 @@ class DistrictModal extends React.Component {
         let note = 0
         this.props.checkedCards.forEach(card => {
           if (card.value === 'nature') {
-            note += district.notes.green_space_note
+            note += district.notes[0].note
           }
           if (card.value === 'sortir') {
-            note += district.notes.event_note
+            note += district.notes[1].note
           }
           if (card.value === 'velo') {
-            note += district.notes.velib_note
+            note += district.notes[2].note
           }
           if (card.value === 'wifi') {
-            note += district.notes.wifi_note
+            note += district.notes[3].note
           }
         });
         district.ratingRelativeToCheckedCards = (note / this.props.checkedCards.length)
@@ -93,11 +93,8 @@ class DistrictModal extends React.Component {
     }      
 
     if (this.props.checkedCards) {
-      var max = districts.reduce(function(a , b) {
-        console.log(districts)
-        return Math.max(a.ratingRelativeToCheckedCards, b.ratingRelativeToCheckedCards);
-      });
-      console.log(max)
+      const max = Math.max.apply(Math, districts.map(function(district) { return district.ratingRelativeToCheckedCards; }))
+      const district = districts.find(function(district){ return district.ratingRelativeToCheckedCards === max; })
     }
 
     return (

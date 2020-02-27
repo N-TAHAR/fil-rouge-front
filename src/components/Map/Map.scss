@@ -17,7 +17,7 @@ g.full {
 
   &:hover, &.highlighted {
     .surface {
-      fill: $green;
+      fill: $blue;
     }
     .text {
       fill: white;
@@ -26,7 +26,7 @@ g.full {
 
   &.favorite {
     .surface {
-      fill: $blue
+      fill: $green
     }
     .text {
       fill: white

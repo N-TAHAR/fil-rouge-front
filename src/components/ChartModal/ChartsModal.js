@@ -1,5 +1,5 @@
 import React from 'react'
-import {zipCodeToId, getCategoryNameFromIndex, getDistrictName, getDistrictDescription, getAthleticEvents} from '../../services/utils'
+import {zipCodeToId, getDistrictName, getDistrictDescription, getAthleticEvents} from '../../services/utils'
 import ChartComp from './ChartComp'
 
 class ChartsModal extends React.Component {
@@ -16,7 +16,7 @@ class ChartsModal extends React.Component {
             {zipCodeToId(this.props.district.district)} <span className="abréviation"> {zipCodeToId(this.props.district.district) !== '1' ? 'ème' : 'er'}</span> — {getDistrictName(zipCodeToId(this.props.district.district))}
           </div>
           <div className="modal-content">
-            <img class="background-image" src={require(`../../assets/images/${this.props.district.district}.jpg`)} />
+            <img alt="" class="background-image" src={require(`../../assets/images/${this.props.district.district}.jpg`)} />
             <div className="section">
               <h2>{zipCodeToId(this.props.district.district)} <span className="abréviation"> {zipCodeToId(this.props.district.district) !== '1' ? 'ème' : 'er'}</span> arrondissement</h2>
               <div class="grey-text">Correspond à vos critères</div>

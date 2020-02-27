@@ -21,7 +21,7 @@ class ChartComp extends React.Component {
           <h2 class="chart-name">
             {this.props.category.name}
           </h2>
-          <div class="grey-text">Moyenne pour cette catégorie : { search(this.props.category.name, this.props.averageNotes).note }</div>
+          <div class="grey-text">Moyenne de cette catégorie : <strong>{ search(this.props.category.name, this.props.averageNotes).note }</strong></div>
         </div>
       </div>
     )

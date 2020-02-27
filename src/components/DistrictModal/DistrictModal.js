@@ -21,7 +21,7 @@ class DistrictModal extends React.Component {
       <div className={`district-modal ${this.props.choiceModalIsVisible ? 'hidden' : ''}`}>
         <div className="modal-header">
           <select onChange={this.handleChange}>
-            <option value="note">Note {this.props.checkedCards === null ? '' : '(en fonction de vos préférences)'}</option>
+            <option value="note">Classer par note {this.props.checkedCards === null ? '' : '(en fonction de vos préférences)'}</option>
             <option value="arrondissements">Classer par arrondissements</option>
           </select>
           <button className="filters" onClick={this.props.openChoiceModal}> Filtres </button>

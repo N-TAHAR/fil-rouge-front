@@ -19,7 +19,7 @@ class ChoiceModal extends React.Component {
           title: "Je veux me déplacer en vélo",
           value: "velo",
           description: "Nous allons chercher les arrondissements avec la meilleure qualité d'air pour assurer votre bien-être durant les Jeux Olympiques",
-          imgName: 'nature',
+          imgName: 'velo',
           checked: false,
           id: 2
         },
@@ -27,7 +27,7 @@ class ChoiceModal extends React.Component {
           title: "J'aime sortir le soir",
           value: "sortir",
           description: "Nous allons chercher les arrondissements avec la meilleure qualité d'air pour assurer votre bien-être durant les Jeux Olympiques",
-          imgName: 'nature',
+          imgName: 'event',
           checked: false,
           id: 3
         },
@@ -43,7 +43,7 @@ class ChoiceModal extends React.Component {
           title: "Je veux du wifi",
           value: "wifi",
           description: "Nous allons chercher les arrondissements avec la meilleure qualité de wifi pour assurer votre bien-être durant les Jeux Olympiques",
-          imgName: 'nature',
+          imgName: 'wifi',
           checked: false,
           id: 5
         },

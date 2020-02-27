@@ -1,7 +1,7 @@
 import React from 'react'
-import ChoiceModal from './components/ChoiceModal/ChoiceModal.js'
 import DistrictModal from './components/DistrictModal/DistrictModal.js'
-import Map from './components/Map'
+import Map from './components/Map/Map.js'
+import InfoModal from './components/InfoModal/InfoModal.js'
 
 class App extends React.Component {
 
@@ -12,6 +12,7 @@ class App extends React.Component {
       mapIsBlurred: true,
       currentDistrict: null,
       districts: [],
+      averages: [],
       choiceModalIsVisible: true
     }
     
@@ -28,7 +29,8 @@ class App extends React.Component {
     .then(res => res.json())
     .then((result) => {
       this.setState({
-        districts: result
+        districts: result.districts,
+        averages: result.average_notes
       }, () => {
         console.log(this.state.districts)
       })
@@ -38,26 +40,22 @@ class App extends React.Component {
   render() {
     return (
       <main className="app">
-        <ChoiceModal 
-        hideChoiceModal={this.hideChoiceModal} 
-        isVisible={this.state.choiceModalIsVisible} 
-        unblurMap={this.unblurMap} 
-        saveCards={this.saveCards}
-        />
-
         <div className={`content ${this.state.mapIsBlurred ?  'blurred' : ''}`}>
           <DistrictModal 
-          openChoiceModal={this.openChoiceModal} 
+          openChoiceModal={this.openChoiceModal}
           hideChoiceModal={this.hideChoiceModal} 
+          choiceModalIsVisible={this.state.choiceModalIsVisible}
+          saveCards={this.saveCards}
           checkedCards={this.state.checkedCards} 
           districts={this.state.districts} 
           highlightDistrict={this.highlightDistrict} 
-          unhighlightDistrict={this.unhighlightDistrict} 
+          unhighlightDistrict={this.unhighlightDistrict}
           handleCardClick={this.handleCardClick} 
           goBack={this.goBack} 
           currentDistrict={this.state.currentDistrict} 
           />
-          <Map handleMapClick={this.handleMapClick} />
+          <Map handleMapClick={this.handleMapClick} />1
+          <InfoModal isVisible={this.state.choiceModalIsVisible} />
         </div>
       </main>
 
@@ -93,19 +91,16 @@ class App extends React.Component {
   saveCards(cards) {
     this.setState({
       checkedCards: cards
+    }, function() {
     })
   }
 
-  favoriteDistrict(district) {
+  highlightDistrict(district) {
     document.querySelector(`g.full-${district.district}`).classList.add('favorite')
   }
 
-  highlightDistrict(district) {
-    document.querySelector(`g.full-${district.district}`).classList.add('highlighted')
-  }
-
   unhighlightDistrict(district) {
-    document.querySelector(`g.full-${district.district}`).classList.remove('highlighted')
+    document.querySelector(`g.full-${district.district}`).classList.remove('favorite')
   }
 
   hideChoiceModal() {

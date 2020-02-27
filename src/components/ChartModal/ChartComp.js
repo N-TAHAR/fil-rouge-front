@@ -14,9 +14,9 @@ class ChartComp extends React.Component {
   render() {
     return (
       <div className="chart">
-        <div className="chart-name">{this.props.name}</div>
-        <canvas className="chart-canvas" id={this.props.name}></canvas>
-        <div className="rating">{this.props.note} / 5</div>
+        <div className="chart-name">{this.props.category.name}</div>
+        <canvas className="chart-canvas" id={this.props.category.name}></canvas>
+        <div className="rating">{this.props.category.note} / 5</div>
       </div>
     )
   }
@@ -30,23 +30,23 @@ class ChartComp extends React.Component {
   }
 
   updateChart(nextProps) {
-    this.state.chart.data.datasets[0].data[0] = nextProps.note
-    this.state.chart.data.datasets[0].data[1] = 5 - nextProps.note
+    this.state.chart.data.datasets[0].data[0] = nextProps.category.note
+    this.state.chart.data.datasets[0].data[1] = 5 - nextProps.category.note
     this.state.chart.update()
   }
 
   createChart(props) {
     this.setState({
       chart: 
-      new Chart(document.getElementById(props.name), {
+      new Chart(document.getElementById(props.category.name), {
         type: 'doughnut',
         data: {
           datasets: [
             {
-              label: props.name,
+              label: props.category.name,
               backgroundColor: ["#3047E2", 'rgba(0,0,0,0.02)'],
               hoverBackgroundColor: ["#3047E2", 'rgba(0,0,0,0.02)'],
-              data: [props.note, 5-props.note]
+              data: [props.category.note, 5-props.category.note]
             }
           ]
         },

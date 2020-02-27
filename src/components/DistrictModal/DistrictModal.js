@@ -1,6 +1,7 @@
 import React from 'react'
 import DistrictCard from './DistrictCard'
 import ChartsModal from '../ChartModal/ChartsModal'
+import ChoiceModal from '../ChoiceModal/ChoiceModal'
 
 class DistrictModal extends React.Component {
   constructor(props) {
@@ -10,7 +11,6 @@ class DistrictModal extends React.Component {
       filterMode: 'note',
     }
 
-    this.handleFilterClick = this.handleFilterClick.bind(this)
     this.handleChange = this.handleChange.bind(this)
     this.sorteredDistricts = this.sorteredDistricts.bind(this)
 
@@ -18,18 +18,28 @@ class DistrictModal extends React.Component {
 
   render() {
     return (
-      <div className="district-modal">
-        <select onChange={this.handleChange}>
-          <option value="note">Note</option>
-          <option value="arrondissements">Arrondissements</option>
-        </select>
-        <button className="filters" onClick={this.props.openChoiceModal}> Filtres </button>
+      <div className={`district-modal ${this.props.choiceModalIsVisible ? 'hidden' : ''}`}>
+        <div className="modal-header">
+          <select onChange={this.handleChange}>
+            <option value="note">Note</option>
+            <option value="arrondissements">Arrondissements</option>
+          </select>
+          <button className="filters" onClick={this.props.openChoiceModal}> Filtres </button>
+        </div>
         <div className="modal-content">
           <div className="district-cards">
           {this.props.currentDistrict === null && this.sorteredDistricts()}
           </div>
           </div>
-        <ChartsModal onClick={this.props.goBack} district={this.props.currentDistrict} />
+        <ChoiceModal
+        hideChoiceModal={this.props.hideChoiceModal} 
+        isVisible={this.props.choiceModalIsVisible}
+        saveCards={this.props.saveCards}
+        />
+        <ChartsModal 
+        onClick={this.props.goBack} 
+        district={this.props.currentDistrict} 
+        />
       </div>
     )
   }
@@ -80,6 +90,14 @@ class DistrictModal extends React.Component {
       districts.sort(function(a, b) {
         return a.district < b.district ? -1 : 1
       })
+    }      
+
+    if (this.props.checkedCards) {
+      var max = districts.reduce(function(a , b) {
+        console.log(districts)
+        return Math.max(a.ratingRelativeToCheckedCards, b.ratingRelativeToCheckedCards);
+      });
+      console.log(max)
     }
 
     return (
@@ -91,24 +109,11 @@ class DistrictModal extends React.Component {
         )
       })
     )
-
   }
 
   handleChange(e) {
     this.setState({
       filterMode: e.target.value
-    })
-  }
-
-  handleFilterClick() {
-    let newFilterState
-    if (this.state.filterMode === 'note') {
-      newFilterState = 'arrondissements'
-    } else {
-      newFilterState = 'note'
-    }
-    this.setState({
-      filterMode: newFilterState
     })
   }
 }

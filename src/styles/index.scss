@@ -9,10 +9,11 @@
 
 // Components
 
-@import './components/ChoiceModal';
-@import './components/DistrictModal';
-@import './components/ChartsModal';
-@import './components/Map';
+@import './../components/ChoiceModal/ChoiceModal.scss';
+@import './../components/DistrictModal/DistrictModal.scss';
+@import './../components/ChartModal/ChartsModal.scss';
+@import './../components/Map/Map.scss';
+@import './../components/InfoModal/InfoModal.scss';
 
 
 *, *::before, *::after {
@@ -31,6 +32,12 @@ h1 {
   font-weight: 400;
   color: $blue;
   font-size: 44px;
+}
+
+h2 {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 8px 0;
 }
 
 #root, main, .content {
@@ -71,6 +78,10 @@ button.primary {
   }
 }
 
+strong {
+  font-weight: bold;
+}
+
 button.secondary {
   font-size: 13px;
   color: $blue;
@@ -93,4 +104,16 @@ select {
   border-radius: 50px;
   outline: none;
   display: inline-block;
+}
+
+hr {
+  height: 1px;
+  border: none;
+  background: $middlegrey;
+  width: 100%;
+}
+.grey-text {
+  margin-top: 12px;
+  margin-bottom: 8px;
+  color: $grey;
 }

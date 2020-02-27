@@ -7,6 +7,11 @@
   overflow-x: hidden;
   background: white;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+
+  &.hidden {
+    overflow: hidden;
+  }
+  
   &::-webkit-scrollbar {
     width: 5px;
   }
@@ -15,7 +20,14 @@
     background: $green; 
   }
 
-  .filter {
+  .background-image {
+    width: 100%;
+    max-height: 270px;
+    display: block;
+    object-fit: cover;
+  }
+
+  .modal-header {
     user-select: none;
     padding: 16px 0;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
@@ -23,7 +35,6 @@
     margin-bottom: 16px;
     text-align: center;
     width: 100%;
-    cursor: pointer;
     position: relative;
 
     &::after {
@@ -89,32 +100,31 @@
 
   .card-footer {
     padding: 16px;
+  }
 
-    .stars {
-      display: inline-block;
+  .stars {
+    display: inline-block;
+  }
+
+  .star {
+    width: 11px;
+    height: 11px;
+    border-radius: 100px;
+    background: $middlegrey;
+    display: inline-block;
+    margin-right: 5px;
+    transition: background-color .2s;
+
+    &.checked {
+      background: $green;
     }
+  }
 
-    .star {
-      width: 11px;
-      height: 11px;
-      border-radius: 100px;
-      border: 1px solid $grey;
-      display: inline-block;
-      margin-right: 5px;
-      transition: border .2s, background-color .2s;
-
-      &.checked {
-        border: 1px solid $green;
-        background: $green;
-      }
-    }
-
-    .value {
-      margin-left: 4px;
-      display: inline-block;
-      font-size: 14px;
-      color: $grey;
-    }
+  .value {
+    margin-left: 4px;
+    display: inline-block;
+    font-size: 14px;
+    color: $grey;
   }
 
 
@@ -130,10 +140,20 @@
   border-radius: 50px;
   text-align: center;
   border: 1px solid grey;
+  color: $blue;
   outline: none;
   margin-left: 16px;
-  margin-bottom: 16px;
-  margin-top: 16px;
+
+  &::after {
+    content: "";
+    display: inline-block;
+    margin-left: 3px;
+    transform: translateY(3px);
+    width: 14px;
+    height: 14px;
+    background-size: cover;
+    background-image: url('../../assets/images/filters.svg')
+  }
 }
 
 @media(max-width: 1024px) {

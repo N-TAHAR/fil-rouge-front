@@ -13,7 +13,7 @@ class ChoiceCard extends React.Component {
         </div>
 
         <div className="image-container">
-          <img src={require(`../../assets/images/${this.props.card.imgName}.jpg`)} alt={this.props.card.title} />
+          <img src={require(`../../assets/images/card_choice/${this.props.card.imgName}.jpg`)} alt={this.props.card.title} />
         </div>
 
         <div className="card-footer">

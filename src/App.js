@@ -34,6 +34,7 @@ class App extends React.Component {
         averages: result.average_notes
       }, () => {
         console.log(this.state.districts)
+        console.log(this.state.averages)
       })
     })
   }

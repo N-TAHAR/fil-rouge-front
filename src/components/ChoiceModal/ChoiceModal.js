@@ -19,7 +19,7 @@ class ChoiceModal extends React.Component {
           title: "Je veux me déplacer en vélo",
           value: "velo",
           description: "Nous prendrons en compte la facilité d’accès aux bornes vélib en comparant le nombre de bornes disponible entre les différents arrondissement de Paris",
-          imgName: 'nature',
+          imgName: 'velo',
           checked: false,
           id: 2
         },
@@ -27,7 +27,7 @@ class ChoiceModal extends React.Component {
           title: "J'aime sortir le soir",
           value: "sortir",
           description: "Nous comparons l’activité des arrondissements en énumérant le nombre d’activités recensées dans les mairies, qu’elles soient privées ou publique.",
-          imgName: 'nature',
+          imgName: 'event',
           checked: false,
           id: 3
         },
@@ -43,7 +43,7 @@ class ChoiceModal extends React.Component {
           title: "Je veux du wifi",
           value: "wifi",
           description: "Nous comparons la couverture sans fil en libre d’accès en énumérant le nombre de bornes wifi publique disponibles dans l’arrondissement",
-          imgName: 'nature',
+          imgName: 'wifi',
           checked: false,
           id: 5
         },

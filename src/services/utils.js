@@ -112,3 +112,11 @@ export function getAthleticEvents(districtNumber) {
     return `Les épreuves ${events[districtNumber].join(', ')} se déroulent dans cet arrondissement.`
   }
 }
+
+export function search(keyValue, array){
+  for (var i=0; i < array.length; i++) {
+      if (array[i].name === keyValue) {
+          return array[i];
+      }
+  }
+}

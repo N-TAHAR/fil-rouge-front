@@ -55,6 +55,7 @@ class App extends React.Component {
           handleCardClick={this.handleCardClick} 
           goBack={this.goBack} 
           currentDistrict={this.state.currentDistrict}
+          averageNotes={this.state.averages}
           />
           <Map handleMapClick={this.handleMapClick} />1
           <InfoModal isVisible={this.state.choiceModalIsVisible} />
@@ -116,7 +117,8 @@ class App extends React.Component {
 
   hideChoiceModal() {
     this.setState({
-      choiceModalIsVisible: false
+      choiceModalIsVisible: false,
+      checkedCards: null
     })
   }
 

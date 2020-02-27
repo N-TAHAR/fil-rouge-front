@@ -8,7 +8,7 @@ class DistrictModal extends React.Component {
     super(props)
 
     this.state = {
-      filterMode: 'note',
+      filterMode: 'note'
     }
 
     this.handleChange = this.handleChange.bind(this)
@@ -21,7 +21,7 @@ class DistrictModal extends React.Component {
       <div className={`district-modal ${this.props.choiceModalIsVisible ? 'hidden' : ''}`}>
         <div className="modal-header">
           <select onChange={this.handleChange}>
-            <option value="note">Note {this.props.checkedCards === null ? '' : '(en fonction de vos préférences'}</option>
+            <option value="note">Note {this.props.checkedCards === null ? '' : '(en fonction de vos préférences)'}</option>
             <option value="arrondissements">Classer par arrondissements</option>
           </select>
           <button className="filters" onClick={this.props.openChoiceModal}> Filtres </button>
@@ -36,9 +36,10 @@ class DistrictModal extends React.Component {
         isVisible={this.props.choiceModalIsVisible}
         saveCards={this.props.saveCards}
         />
-        <ChartsModal 
+        <ChartsModal
         onClick={this.props.goBack} 
-        district={this.props.currentDistrict} 
+        district={this.props.currentDistrict}
+        averageNotes={this.props.averageNotes}
         />
       </div>
     )
@@ -90,12 +91,12 @@ class DistrictModal extends React.Component {
       districts.sort(function(a, b) {
         return a.district < b.district ? -1 : 1
       })
-    }      
-
-    if (this.props.checkedCards) {
-      const max = Math.max.apply(Math, districts.map(function(district) { return district.ratingRelativeToCheckedCards; }))
-      const district = districts.find(function(district){ return district.ratingRelativeToCheckedCards === max; })
     }
+
+    // if (this.props.checkedCards) {
+    //   const max = Math.max.apply(Math, districts.map(function(district) { return district.ratingRelativeToCheckedCards; }))
+    //   const district = districts.find(function(district){ return district.ratingRelativeToCheckedCards === max; })
+    // }
 
     return (
       districts.map(district => {

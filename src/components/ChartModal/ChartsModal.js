@@ -13,12 +13,12 @@ class ChartsModal extends React.Component {
         <div className="wrapper">
           <div className="go-back" onClick={this.props.onClick}></div>
           <div className="modal-header">
-            {zipCodeToId(this.props.district.district)} <span className="abréviation"> {zipCodeToId(this.props.district.district) !== '1' ? 'ème' : 'er'}</span> — {getDistrictName(zipCodeToId(this.props.district.district))}
+            {zipCodeToId(this.props.district.district)} <span className="abréviation"> {parseInt(zipCodeToId(this.props.district.district)) !== 1 ? 'ème' : 'er'}</span> — {getDistrictName(zipCodeToId(this.props.district.district))}
           </div>
           <div className="modal-content">
             <img alt="" class="background-image" src={require(`../../assets/images/${this.props.district.district}.jpg`)} />
             <div className="section">
-              <h2>{zipCodeToId(this.props.district.district)} <span className="abréviation"> {zipCodeToId(this.props.district.district) !== '1' ? 'ème' : 'er'}</span> arrondissement</h2>
+              <h2>{zipCodeToId(this.props.district.district)} <span className="abréviation"> {zipCodeToId(this.props.district.district) !== 1 ? 'ème' : 'er'}</span> arrondissement</h2>
               <div class="grey-text">Correspond à vos critères</div>
               <div className="rating">
                 <div className="stars">
@@ -42,9 +42,10 @@ class ChartsModal extends React.Component {
                 {getAthleticEvents(zipCodeToId(this.props.district.district))}
               </div>
             </div>
+            <hr />
             {Object.values(this.props.district.notes).map(category => {
               return (
-                <ChartComp key={category.name} category={category} />
+                <ChartComp averageNotes={this.props.averageNotes} key={category.name} category={category} />
               )
             })}
           </div>

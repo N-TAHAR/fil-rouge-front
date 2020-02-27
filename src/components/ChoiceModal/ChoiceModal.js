@@ -24,7 +24,7 @@ class ChoiceModal extends React.Component {
           id: 2
         },
         {
-          title: "J'aime sortir le soir",
+          title: "Je veux me promener !",
           value: "sortir",
           description: "Nous comparons l’activité des arrondissements en énumérant le nombre d’activités recensées dans les mairies, qu’elles soient privées ou publique.",
           imgName: 'event',
@@ -109,8 +109,9 @@ class ChoiceModal extends React.Component {
     }
 
     const checkedCards = this.state.cards.filter(card => card.checked)
-    this.props.saveCards(checkedCards)
+    console.log(checkedCards)
     this.props.hideChoiceModal()
+    this.props.saveCards(checkedCards)
   }
 }
 

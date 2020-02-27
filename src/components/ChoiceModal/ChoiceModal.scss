@@ -173,11 +173,12 @@
     }
 
     &:hover {
-      background: $green;
+      background: $blue;
+      color: white;
     }
 
     &.checked {
-      background: $blue;
+      background: $green;
       color: white;
       animation: scaleInOut .5s;
     }

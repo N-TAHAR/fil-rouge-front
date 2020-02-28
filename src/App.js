@@ -2,6 +2,7 @@ import React from 'react'
 import DistrictModal from './components/DistrictModal/DistrictModal.js'
 import Map from './components/Map/Map.js'
 import InfoModal from './components/InfoModal/InfoModal.js'
+import RatingModal from './components/RatingModal/RatingModal.js'
 
 class App extends React.Component {
 
@@ -23,6 +24,8 @@ class App extends React.Component {
     this.goBack = this.goBack.bind(this)
     this.openChoiceModal = this.openChoiceModal.bind(this)
     this.hideChoiceModal = this.hideChoiceModal.bind(this)
+    this.showRatingModal = this.showRatingModal.bind(this)
+    this.hideRatingModal = this.hideRatingModal.bind(this)
   }
 
   componentDidMount() {
@@ -56,13 +59,27 @@ class App extends React.Component {
           goBack={this.goBack} 
           currentDistrict={this.state.currentDistrict}
           averageNotes={this.state.averages}
+          showRatingModal={this.showRatingModal}
           />
           <Map handleMapClick={this.handleMapClick} />1
           <InfoModal isVisible={this.state.choiceModalIsVisible} />
+          <RatingModal isVisible={this.state.ratingModalIsVisible} hideRatingModal={this.hideRatingModal} />
         </div>
       </main>
 
     );
+  }
+
+  showRatingModal() {
+    this.setState({
+      ratingModalIsVisible: true
+    })
+  }
+
+  hideRatingModal() {
+    this.setState({
+      ratingModalIsVisible: false
+    })
   }
   
   handleMapClick(districtId) {

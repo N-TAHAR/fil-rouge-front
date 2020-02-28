@@ -40,6 +40,7 @@ class DistrictModal extends React.Component {
         onClick={this.props.goBack} 
         district={this.props.currentDistrict}
         averageNotes={this.props.averageNotes}
+        showRatingModal={this.props.showRatingModal}
         />
       </div>
     )

@@ -48,6 +48,8 @@ class ChartsModal extends React.Component {
                 <ChartComp averageNotes={this.props.averageNotes} key={category.name} category={category} />
               )
             })}
+            <hr />
+            <div onClick={this.props.showRatingModal} class="blue-text"> Comment sont calculés les scores ?</div>
           </div>
         </div>
       </div>

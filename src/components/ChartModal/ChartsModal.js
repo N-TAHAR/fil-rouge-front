@@ -19,7 +19,7 @@ class ChartsModal extends React.Component {
             <img alt="" class="background-image" src={require(`../../assets/images/${this.props.district.district}.jpg`)} />
             <div className="section">
               <h2>{zipCodeToId(this.props.district.district)} <span className="abréviation"> {zipCodeToId(this.props.district.district) !== 1 ? 'ème' : 'er'}</span> arrondissement</h2>
-              <div class="grey-text">Correspond à vos critères</div>
+              <div class="grey-text">Note globale</div>
               <div className="rating">
                 <div className="stars">
                   <div className={`star ${this.props.district.global_note > 0.5 ? 'checked' : ''}`}></div>
